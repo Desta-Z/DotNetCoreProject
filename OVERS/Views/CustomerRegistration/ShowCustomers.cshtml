@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OVERS.Models.Customer>
+
+@{
+    ViewData["Title"] = "ShowCustomers";
+}
+
+<h2>List of Registered Customers</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.currentaddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.currentaddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.country)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.cid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.cid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.cid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
